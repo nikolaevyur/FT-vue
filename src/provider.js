@@ -1,0 +1,1 @@
+export const Vue = require('vue/dist/vue.esm.js').default

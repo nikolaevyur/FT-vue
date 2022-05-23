@@ -1,0 +1,183 @@
+
+
+@mixin round-corner ( $corners ) {
+	@if nth($corners, 1) {
+		border-top-left-radius: nth($corners, 1);
+	}
+	@if nth($corners, 2) {
+		border-top-right-radius: nth($corners, 2);
+	}
+	@if nth($corners, 3) {
+		border-bottom-right-radius: nth($corners, 3);
+	}
+	@if nth($corners, 4) {
+		border-bottom-left-radius: nth($corners, 4);
+	}
+}
+
+@mixin centerer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder { @content; }
+	&::-moz-placeholder          { @content; } /* Firefox 19+ */
+	&:-moz-placeholder           { @content; } /* Firefox 18- */
+	&:-ms-input-placeholder      { @content; }
+}
+
+@mixin inherit ($props: ()) {
+	@each $item in $props {
+		#{$item}: inherit;
+	}
+}
+
+@mixin cover( $top: 0, $right: 0, $bottom: 0, $left: 0 ) {
+	position: absolute;
+	top: $top;
+	left: $left;
+	right: $right;
+	bottom: $bottom;
+}
+
+@function tint($color, $percentage) {
+	@return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+	@return mix(black, $color, $percentage);
+}
+
+@mixin when-inside($context) {
+	#{$context} & {
+		@content;
+	}
+}
+
+@mixin linx ($link, $visit, $hover, $active) {
+	a {
+		color: $link;
+		&:visited {
+			color: $visit;
+		}
+		&:hover {
+			color: $hover;
+		}
+		&:active {
+			color: $active;
+		}
+	}
+}
+
+@mixin qualify($element-selector) {
+	@at-root #{$element-selector + &} {
+		@content;
+	}
+}
+
+@mixin unstyle-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+@mixin transition-to {
+	&-enter,
+	&-leave-to {
+		@content
+	}
+}
+
+@mixin transition-from {
+	&-enter-active,
+	&-leave-active {
+		@content
+	}
+}
+
+@mixin inherit($props...) {
+	@each $name in $props {
+		#{$name}: inherit;
+	}
+}
+
+@mixin vue-transition-start {
+	&-enter-active, &-leave-active {
+		@content;
+	}
+}
+@mixin vue-transition-end {
+	&-enter, &-leave-to {
+		@content;
+	}
+}
+
+@mixin button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+/*
+	Layers
+*/
+
+$z-index: (
+	'under': -1,
+	'zero': 0,
+	'default': 1,
+	'over': 10
+);
+
+$z-level: (
+	'backdrop': 300,
+	'overlay': 500,
+	'preloader': 600
+);
+
+$z-combo: map-merge($z-index, $z-level);
+
+@function z($index: null, $level: null) {
+	@if $index and map-has-key($z-combo, $level) {
+		@return map-get($z-combo, $index) + map-get($z-combo, $level);
+	}
+	@else if $index == auto and $level == null {
+		@return auto;
+	}
+	@else if $index == null and $level == null {
+		@return auto;
+	}
+	@else if $index == null and $level {
+		@return map-get($z-combo, $level);
+	}
+	@else if $index == $level and $level == null map-has-key($z-combo, $index) {
+		@return map-get($z-combo, $index);
+	}
+}
+
+@mixin hover-fade($speed: 80ms, $properties: opacity) {
+	opacity: 1;
+	transition: $properties $speed linear;
+
+	&:hover {
+		opacity: .6;
+	}
+}
+
+@mixin on-hover($for) {
+	opacity: 0;
+	transition: opacity 160ms;
+
+	@at-root #{$for}:hover & {
+		opacity: 1;
+	}
+}
