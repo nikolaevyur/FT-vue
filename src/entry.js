@@ -5,6 +5,6 @@ require('@/utils/register-assets')
 require('@/utils/register-components')
 
 new Vue({
-    el: '#app',
+    el: '.vue-app',
     render: h => h(App),
   })

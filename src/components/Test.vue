@@ -1,12 +1,15 @@
 <template>
 	<div class="app" :class="['app3', {'app2': class2}]" :style="style" :id="app1" @click="onClick">
-		<Test />
-		<Test2 />
+		<div v-text="alert" v-if="class2"/>
+		<div v-text="app1" v-else/>
+		<div v-html="alert" >
+			{{ text2 }}
+		</div>
+		<div v-text="item" v-for="item in arr" :key="item" />
 	</div>
 </template>
 
 <script>
-
 export default {
 	data() {
 		return {
@@ -16,7 +19,6 @@ export default {
 			arr: [1, 2, 3, 4]
 		}
 	},
-
 	
 	computed: {
 		text() {
