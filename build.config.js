@@ -23,7 +23,8 @@ module.exports = {
 		assetsPublicPath: '/',
 
 		require: {
-			
+			modules: [],
+			args: [],
 		},
 
 		bundleAnalyzerReport: process.env.npm_config_report

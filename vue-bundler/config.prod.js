@@ -45,35 +45,39 @@ if (buildConfig.bundleAnalyzerReport) {
 	defaultWebpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
-webpackConfig.push(Object.assign({}, defaultWebpackConfig, {
-	entry: {
-		[entryKey]: common.entry[entryKey]
-	},
-	module: {
-		rules: [
-			...defaultWebpackConfig.module.rules,
-			...vueLoaders(),
-			...styleLoaders(true),
-			...assetsLoaders(),
-			...scriptLoaders()
-		]
-	},
-	plugins: [
-		...(buildConfig.plugins ? buildConfig.plugins : []),
-		...defaultWebpackConfig.plugins,
-		...(buildConfig.require ? 
-			[
-				new BannerWebpackPlugin({
-					chunks: {
-						[entryKey]: {
-							beforeContent: `require([${ (portalName && buildConfig.require[portalName] || buildConfig.require).modules.map(x => `"${x}"`).join(', ') }], function (${(portalName && buildConfig.require[portalName] || buildConfig.require).args.join(',')}) {\n`,
-							afterContent: `\n});`
+let webpackConfig = [];
+
+Object.keys(common.entry).forEach(entryKey => {
+	webpackConfig.push(Object.assign({}, defaultWebpackConfig, {
+		entry: {
+			[entryKey]: common.entry[entryKey]
+		},
+		module: {
+			rules: [
+				...defaultWebpackConfig.module.rules,
+				...vueLoaders(),
+				...styleLoaders(true),
+				...assetsLoaders(),
+				...scriptLoaders()
+			]
+		},
+		plugins: [
+			...(buildConfig.plugins ? buildConfig.plugins : []),
+			...defaultWebpackConfig.plugins,
+			...(buildConfig.require ? 
+				[
+					new BannerWebpackPlugin({
+						chunks: {
+							[entryKey]: {
+								beforeContent: `require([${ (buildConfig.require).modules.map(x => `"${x}"`).join(', ') }], function (${(buildConfig.require).args.join(',')}) {\n`,
+								afterContent: `\n});`
+							}
 						}
-					}
-				})
-			] : []
-		)
-	]
-}))
+					})
+				] : []
+			)
+		]
+	}))
+})
 
 module.exports = webpackConfig
