@@ -1,7 +1,8 @@
 <template>
 	<div class="app" :class="['app3', {'app2': class2}]" :style="style" :id="app1" @click="onClick">
-		<Test />
-		<Test2 />
+		<!-- <TestComp1 placeholder="test1" :param1="counter" :param2="arr" :param3="obj" :text="app1" v-model="app1" @input="onInput" v-if="class2"/>
+		<TestComp2 placeholder="test1" :param1="counter" :param2="arr" :param3="obj" :text="app1" v-model="app1" @input="onInput" v-else/> -->
+		<component :is="componentName" placeholder="test1" :param1="counter" :param2="arr" :param3="obj" :text="app1" v-model="app1" @input="onInput" />
 	</div>
 </template>
 
@@ -13,12 +14,19 @@ export default {
 			alert: 'Hello <br/>word',
 			app1: 'my-app',
 			counter: 0,
-			arr: [1, 2, 3, 4]
+			arr: [1, 2, 3, 4],
+			obj: {
+				text: 'dddd'
+			},
+			status: ['NEW', 'IN_PROGRESS', "COMPLETED"]
 		}
 	},
 
 	
 	computed: {
+		sfdsfdsf() {
+			return 11
+		},
 		text() {
 			return 'Current date' + new Date().toISOString() + '; count: ' + this.counter
 		},
@@ -33,6 +41,9 @@ export default {
 				'border': '1px solid red',
 				backgroundColor: 'yellow'
 			}
+		},
+		componentName() {
+			return 'TestComp' + this.counter
 		}
 	},
 	mounted() {
@@ -44,6 +55,12 @@ export default {
 		},
 		onClick(e) {
 			this.counter+=1;
+		},
+		updateText(val) {
+			this.app1 = val
+		},
+		onInput(e) {
+			console.log(e)
 		}
 	},
 }
