@@ -47,7 +47,10 @@ export default {
 		}
 	},
 	mounted() {
-		
+		// this.$api.Events.getEvents()
+		// .then((data) => {
+		// 	console.log(data);
+		// })
 	},
 	methods: {
 		getDate() {
