@@ -4,11 +4,9 @@ import axios from 'axios'
 const
 	requireService = require.context('./service', false, /.service.js$/),
 	instance = axios.create({
-		baseURL: 'https://fe-school-api.herokuapp.com/api/events/',
+		baseURL: 'api/',
 		responseType: 'json',
 		headers: {
-			'gtn.access.appid': Vue.prototype.$settings.secretAppId,
-			'App-Id': Vue.prototype.$settings.app.appId,
 			'Content-Type': 'application/json',
 			'Cache-Control': 'no-cache',
 			'Pragma': 'no-cache',
