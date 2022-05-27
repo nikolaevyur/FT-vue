@@ -1,5 +1,5 @@
 <template>
-	<div class="app" :class="['app3', {'app2': class2}]" :style="style">
+	<div class="app123" :class="['app3', {'app2': class2}]" :style="style">
 
 		<div>
 			red
