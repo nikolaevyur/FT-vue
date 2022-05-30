@@ -25,16 +25,21 @@
 			</template>
 			
 		</DropdownButton>
-		<button @click="goToView"></button>
-		<button @click="goBack">goBack</button>
+		<Button @click="goToView"></Button>
+		<Button @click="goBack">goBack</Button>
+
 
 		<router-link :to="link1">red</router-link>
 		<router-link :to="link2">green</router-link>
-		<router-view></router-view>
+		<router-view :key="$route.fullPath"></router-view>
+
+		{{ loading }}
 	</div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import { setTimeout } from 'timers';
 
 export default {
 	data() {
@@ -70,6 +75,7 @@ export default {
 
 	
 	computed: {
+		...mapGetters(['loading']),
 		sfdsfdsf() {
 			return 11
 		},
@@ -90,21 +96,28 @@ export default {
 		},
 		componentName() {
 			return 'TestComp' + this.counter
-		}
+		},
+		
 	},
 	mounted() {
+		// this.setLoading(true);
 		// this.$api.Events.getEvents()
 		// .then((data) => {
+		// 	setTimeout( () => {
+		// 		this.setLoading(false);
+		// 	}, 5000)
 		// 	console.log(data);
 		// })
-		this.$router.push({
-				name: 'ListView1',
-				params: {
-					color: 'green'
-				}
-			})
+		this.fetchEvents()
+		// this.$router.push({
+		// 		name: 'ListView1',
+		// 		params: {
+		// 			color: 'green'
+		// 		}
+		// 	})
 	},
 	methods: {
+		...mapActions(['setLoading', 'fetchEvents']),
 		getDate() {
 			return new Date()
 		},
