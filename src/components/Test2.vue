@@ -38,7 +38,10 @@ export default {
 		}
 	},
 	mounted() {
-		
+		this.$on('aaa', onClick)
+	},
+	destroyed() {
+		this.$off('aaa', onClick)
 	},
 	methods: {
 		getDate() {

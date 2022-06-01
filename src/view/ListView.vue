@@ -1,8 +1,8 @@
 <template>
-	<div class="dropdown-wrapper">
+	<div class="dropdown-wrapper" ref="div1">
 		ListView
 		{{color}}
-		<Input v-model="storeText" placeholder="Hello" />
+		<Input v-model="storeText" placeholder="Hello" ref="input1" />
 		<router-view></router-view>
 	</div>
 </template>
@@ -43,6 +43,9 @@ export default {
 	},
 	mounted() {
 		this.setActiveTab(this.$route.fullPath)
+		//this.$message(this.$refs.div1.getBoundingClientRect().width)
+		// this.$message(this.$refs.input1.dd)
+		//this.$message(this.$refs.input1.$el.getBoundingClientRect().width)
 		// this.text1 = this.getCurrentFilter || null
 	},
 	methods: {
