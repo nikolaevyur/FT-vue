@@ -1,4 +1,5 @@
 <template>
+	<!-- <div class="dropdown-wrapper" v-deprecated="'sss'"> -->
 	<div class="dropdown-wrapper">
 		<div class="dropdown-button" :class="{'-active': isActive}" @click="toggle">
 			<svg width="10" height="12">
@@ -13,7 +14,12 @@
 </template>
 
 <script>
+import deprecated from '../common/directives/deprecated'
+
 export default {
+	directives: {
+		deprecated
+	},
 	inheritAttrs: false,
 	data() {
 		return {
@@ -30,7 +36,7 @@ export default {
 		}
 	},
 	mounted() {
-
+		console.log(this.$el.getBoundingClientRect());
 	},
 	methods: {
 

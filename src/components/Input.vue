@@ -1,20 +1,22 @@
 <template>
     <div>
-        <input :value="value" v-bind="$attrs" v-on="listeners" />
+        <input  v-model="model"  />
     </div>
 </template>
 
 <script>
+import {Model} from '../mixins/model'
 export default {
     inheritAttrs: false,
+    mixins: [Model],
     data() {
         return {
-            // storeText: ''
+            dd: 22
         }
     },
-    props: {
-        value: String
-    },
+    // props: {
+    //     value: String
+    // },
     computed: {
         listeners() {
                 var vm = this
@@ -32,6 +34,9 @@ export default {
             }
             )
         }
+    },
+    created() {
+        console.log('comp2')
     },
     // watch: {
     //     storeText(val) {

@@ -25,13 +25,27 @@
 			</template>
 			
 		</DropdownButton>
+
 		<Button @click="goToView"></Button>
 		<Button @click="goBack">goBack</Button>
+		<Button @click="onAlertClick">Alert</Button>
+
+		<Button @click="onObjClick">{{obj1.aa}}{{cc}}</Button>
+		<Button @click="onArrClick">Change Arr</Button>
 
 
 		<router-link :to="link1">red</router-link>
 		<router-link :to="link2">green</router-link>
 		<router-view :key="$route.fullPath"></router-view>
+
+		<div v-for="item in arr" :key="item">
+			{{item}}
+		</div>
+
+		<div v-text="alert" ref="aaaa" />
+		 <transition name="fade">
+			<p v-if="show">привет</p>
+		</transition>
 
 		{{ loading }}
 	</div>
@@ -64,7 +78,11 @@ export default {
 				params: {
 					color: 'green'
 				}
-			}
+			},
+			obj1: {
+				aa: 1
+			},
+			show: false
 		}
 	},
 	watch: {
@@ -97,6 +115,9 @@ export default {
 		componentName() {
 			return 'TestComp' + this.counter
 		},
+		cc() {
+			return this.obj1.bb ? this.obj1.bb.cc : null
+		}
 		
 	},
 	mounted() {
@@ -137,6 +158,26 @@ export default {
 		},
 		goBack() {
 			this.$router.go(-1);
+		},
+		onAlertClick() {
+			this.$message('heloo')
+		},
+		onObjClick() {
+			this.obj1.aa++;
+			//this.obj1.bb = this.obj1.bb ? this.obj1.bb + 1 : 1
+			// Object.assign(this.obj1, { bb: { cc: 'cc' } })
+			this.$set(this.obj1, 'bb', { cc: 'cc' } );
+		},
+		onArrClick() {
+			this.arr[0]++
+			this.alert = 'dsfdsfdsf'
+			this.show = true
+			// this.$message(this.$refs.aaaa.innerHTML)
+			// this.$nextTick(() => {
+			// 	this.$message(this.$refs.aaaa.innerHTML)
+			// })
+			// this.$set(this.arr, 0, this.arr[0] + 1 );
+			// this.arr.push(this.arr[0] + 10 )
 		}
 	},
 }
@@ -156,5 +197,12 @@ export default {
 
 	.app2 {
 		background: green;
+	}
+
+	.fade-enter-active, .fade-leave-active {
+	transition: opacity 3.5s;
+	}
+	.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+	opacity: 0;
 	}
 </style>
