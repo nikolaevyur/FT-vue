@@ -1,15 +1,17 @@
+
 import Vuex from 'vuex'
 
-import app from './app'
-import app1 from './app/app1'
+import tasks from './app/tasks'
+import users from './app/users'
+
 
 Vue.use(Vuex)
 
 const store = () => {
 	return new Vuex.Store({
 		modules: {
-			app,
-			app1
+			tasks,
+			users
 		}
 	})
 }

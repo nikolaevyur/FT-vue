@@ -1,8 +1,6 @@
-
 import VueRouter from 'vue-router'
 
-import ListView from '../view/ListView'
-import SubListView from '../view/SubListView'
+import TasksList from '../view/TasksList'
 
 Vue.use(VueRouter)
 
@@ -14,32 +12,24 @@ const router = () => {
 		mode: 'hash',
 		routes: [
 			{ 
-				// path: '/user/:id', 
-				path: '/user/:color', 
-				name: 'ListView1',
-				component: ListView, 
+				path: '/tasks', 
+				component: TasksList,
+				name: 'TasksList', 
 				props: true,
-				children: [
-					{
-						path: 'subuser',
-						name: 'SubListView',
-						component: SubListView,
-						props: true,
-						// beforEnter: (to, from, next) => {
-						// 	console.log(from)
-						// 	console.log(to)
-						// 	//next()
-						// }
-					},
-				]
+				// children: [
+				// 	{
+
+				// 	}
+				// ]
+				
 			},
 
-			// {
-			// 	path: '/', redirect: { name: 'ListView1' }
-			// },
-			// {
-			// 	path: '*', redirect: { name: 'ListView1' }
-			// }
+			{
+				path: '/', redirect: { name: 'TasksList' }
+			},
+			{
+				path: '*', redirect: { name: 'TasksList' }
+			}
 		],
 		
 	});

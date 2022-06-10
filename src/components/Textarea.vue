@@ -1,5 +1,5 @@
 <template>
-  <div><input :placeholder='placeholder' v-model='value'/>
+  <div><textarea :placeholder='placeholder' v-model='value'></textarea>
   <p>Введено: {{value}}</p>
   </div>
 </template>

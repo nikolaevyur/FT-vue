@@ -4,7 +4,7 @@ import axios from 'axios'
 const
 	requireService = require.context('./service', false, /.service.js$/),
 	instance = axios.create({
-		baseURL: 'api/',
+		baseURL: 'http://93.95.97.34/api',
 		responseType: 'json',
 		headers: {
 			'Content-Type': 'application/json',
