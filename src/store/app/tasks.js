@@ -68,9 +68,9 @@ export default {
         })
     },
 
-    // setFilter: ({ dispatch, commit }, filter) => {
-    //   commit(mutation.SET_FILTER, filter)
-    //   dispatch('fetchTasks', filter);
-    // },
+    setFilter: ({ dispatch, commit }, filter) => {
+      commit(mutation.SET_FILTER, filter)
+      dispatch('fetchTasks', filter);
+    },
   },
 }
