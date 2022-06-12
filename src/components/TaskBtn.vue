@@ -50,30 +50,49 @@ export default {
 
 .low {
   color: #3ca961;
+  width: 200px;
 }
 
 .medium {
   color: #e9b500;
+  width: 200px;
 }
 
 .high {
   color: #d14343;
+  width: 200px;
 }
 
 .opened {
   background-color: #cccccc;
+  height: 100%;
+  width: 120px;
+  border: 1px solid #333333;
+  border-radius: 5px;
 }
 
 .inProgress {
   background-color: #ffc700;
+  height: 100%;
+  width: 120px;
+  border: 1px solid #333333;
+  border-radius: 5px;
 }
 
 .testing {
   background-color: #ffc700;
+  height: 100%;
+  width: 120px;
+  border: 1px solid #333333;
+  border-radius: 5px;
 }
 
 .complete {
   background-color: #4bd379;
+  height: 100%;
+  width: 120px;
+  border: 1px solid #333333;
+  border-radius: 5px;
 }
 
 .rank {

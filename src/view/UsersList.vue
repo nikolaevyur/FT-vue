@@ -1,18 +1,20 @@
 <template>
   <div>
     <Title>
-      <div class="title__text">Задачи</div>
+      <div class="title__text">Пользователи</div>
     </Title>
     <Board>
-      <Filters />
       <div v-if="loading">loading...</div>
       <div v-else>
-        <div class="task-wrapper" v-if="tasks.data">
-          <Task v-for="task in tasks.data" :key="task.id" :taskData="task" />
+        <div class="user-wrapper" v-if="usersList">
+          <User
+            v-for="(user, index) in usersList"
+            :key="index"
+            :userData="user"
+          />
         </div>
-        <div v-else>Нет задач!</div>
+        <div v-else>Нет пользователей!</div>
       </div>
-      <Pagination />
     </Board>
   </div>
 </template>
@@ -28,33 +30,27 @@ export default {
   },
 
   computed: {
-    ...mapGetters("tasks", ["loading", "tasks", "filter"]),
     ...mapGetters("users", ["users", "usersList"]),
   },
   mounted() {
-    this.setFilter({
-      filter: {},
-      page: 0,
-      limit: 10,
-    });
     this.fetchUsers();
   },
 
   methods: {
-    ...mapActions("tasks", ["setLoading", "fetchTasks", "setFilter"]),
     ...mapActions("users", ["fetchUsers"]),
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.task-wrapper {
+.user-wrapper {
   box-shadow: inset 0px 0px 2px 1px #b5b5b5;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 3px;
-  width: 100%;
+  width: 1200px;
   height: 560px;
+  overflow: hidden;
 }
 </style>

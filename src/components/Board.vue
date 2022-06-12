@@ -1,5 +1,5 @@
 <template>
-  <div class='board'>
+  <div class="board">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,7 @@ export default {};
 </script>
 
 <style lang='scss' scoped>
-  .board {
+.board {
   width: 100%;
   max-width: 1280px;
   min-width: 1060px;
@@ -18,11 +18,11 @@ export default {};
   align-items: center;
   padding: 20px;
   height: 642px;
-  left: calc(50% - 1280px/2);
-  top: calc(50% - 642px/2 + 54px);
-  background: #FFFFFF;
-  box-shadow: 0px 0px 5px 3px #B5B5B5;
+  left: calc(50% - 1280px / 2);
+  top: calc(50% - 642px / 2 + 54px);
+  background: #ffffff;
+  box-shadow: 0px 0px 5px 3px #b5b5b5;
   border-radius: 5px;
-  row-gap: 4%;
-  }
+  row-gap: 15px;
+}
 </style>

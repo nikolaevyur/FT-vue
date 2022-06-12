@@ -1,44 +1,45 @@
 import VueRouter from 'vue-router'
 
 import TasksList from '../view/TasksList'
+import TaskForm from '../view/TaskForm'
+import UsersList from '../view/UsersList'
+import NotFound from '../view/NotFound'
 
 Vue.use(VueRouter)
 
 const router = () => {
-	const r = 
-	 new VueRouter({
-		// Important to prevent hash changes!
-		// Otherwise we'll get instances conflict
-		mode: 'hash',
-		routes: [
-			{ 
-				path: '/tasks', 
-				component: TasksList,
-				name: 'TasksList', 
-				props: true,
-				// children: [
-				// 	{
+	const r =
+		new VueRouter({
+			mode: 'hash',
+			routes: [
+				{
+					path: '/tasks',
+					component: TasksList,
+					name: 'TasksList',
+					props: true,
+				},
+				{
+					path: '/task/:id',
+					name: 'TaskForm',
+					component: TaskForm,
+					props: true,
+				},
+				{
+					path: '/users',
+					name: 'UsersList',
+					component: UsersList,
+					props: true,
+				},
+				{ 
+					path: '*', 
+					name: 'NotFound',
+					component: NotFound, 
+					props: true,
+					children: []
+				},
+			],
 
-				// 	}
-				// ]
-				
-			},
-
-			{
-				path: '/', redirect: { name: 'TasksList' }
-			},
-			{
-				path: '*', redirect: { name: 'TasksList' }
-			}
-		],
-		
-	});
-
-	// r.beforeEach((to, from, next) => {
-	// 	console.log(from)
-	// 	console.log(to)
-	// 	//next()
-	// })
+		});
 
 	return r
 }

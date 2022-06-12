@@ -1,34 +1,31 @@
 <template>
-	<div class="app">
-		
-		<router-view></router-view>
-	</div>
+  <div class="app">
+    <Header />
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {};
+  },
 
-	data() {
-		return {
-		}
-	},
-	
-	computed: {
-
-	},
-	mounted() {
-		
-	},
-	methods: {
-
-	},
-}
+  computed: {},
+  mounted() {},
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped>
-	.app {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		}
+.app {
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 50px;
+  font-family: "Roboto", sans-serif;
+}
 </style>

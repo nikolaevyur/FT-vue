@@ -1,16 +1,16 @@
 <template>
-  <button class='btn' :class='className'>
+  <button class="btn" :class="className">
     {{ title }}
   </button>
 </template>
 
 <script>
 export default {
-  name: 'button',
+  name: "button",
   props: {
     title: {
       type: String,
-      default: 'text',
+      default: "text",
     },
     btn_primary: {
       type: Boolean,
@@ -33,8 +33,8 @@ export default {
   computed: {
     className() {
       return {
-        'btn-primary': this.btn_primary,
-        'btn-error': this.btn_error,
+        "btn-primary": this.btn_primary,
+        "btn-error": this.btn_error,
       };
     },
   },

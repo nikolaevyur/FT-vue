@@ -1,12 +1,14 @@
 <template>
-  <div class='checkbox'>
-    <input type='checkbox' id='jack' value='Джек' />
-    <label for='jack'>Джек</label>
-    <input type='checkbox' id='john' value='Джон' v-model='checkedNames' />
-    <label for='john'>Джон</label>
-    <input type='checkbox' id='mike' value='Майк' v-model='checkedNames' />
-    <label for='mike'>Майк</label>
-
+  <div class="checkbox">
+    <label class="checkbox__item">
+      <input
+        type="checkbox"
+        v-model="checked"
+        :value="index"
+        @change="onChange"
+      />
+      <span>{{ item }}</span>
+    </label>
   </div>
 </template>
 
@@ -14,9 +16,40 @@
 export default {
   data() {
     return {
-      checkedNames: []
-    }
+      checkedItem: false,
+    };
   },
-}
+  props: {
+    item: String,
+    text: String,
+    value: Array,
+    index: String,
+  },
 
+  computed: {
+    checked: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.checkedItem = val;
+      },
+    },
+  },
+
+  methods: {
+    onChange(e) {
+      this.$emit("input", this.checkedItem);
+    },
+  },
+};
 </script>
+
+<style lang='scss' scoped>
+.checkbox {
+  &__item {
+    display: flex;
+    flex-direction: row;
+  }
+}
+</style>
