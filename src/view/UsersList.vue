@@ -8,13 +8,14 @@
       <div v-else>
         <div class="user-wrapper" v-if="usersList">
           <User
-            v-for="(user, index) in usersList"
-            :key="index"
-            :userData="user"
+            v-for="user in users.data"
+            :key="user.id"
+            :userData="usersList[user.id]"
           />
         </div>
         <div v-else>Нет пользователей!</div>
       </div>
+      <Pagination />
     </Board>
   </div>
 </template>
@@ -30,14 +31,19 @@ export default {
   },
 
   computed: {
-    ...mapGetters("users", ["users", "usersList"]),
+    ...mapGetters("users", ["users", "usersList", "usersFilter"]),
   },
   mounted() {
     this.fetchUsers();
+    this.fetchUsersFilter({
+      filter: {},
+      page: 0,
+      limit: 10,
+    })
   },
 
   methods: {
-    ...mapActions("users", ["fetchUsers"]),
+    ...mapActions("users", ["fetchUsers", "fetchUsersFilter", "setFilterUsers"]),
   },
 };
 </script>

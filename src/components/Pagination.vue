@@ -13,12 +13,13 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import Button from "./Button.vue";
 
 export default {
-  components: { Button },
   data() {
-    return { count: 0 };
+    return {
+      count: 0,
+      path: this.$route.path,
+    };
   },
 
   computed: {
@@ -26,22 +27,43 @@ export default {
     ...mapGetters("tasks", ["loading", "tasks", "filter"]),
 
     pages() {
-      return Math.ceil(this.tasks.total / this.filter.limit);
+      if (this.path === "/tasks") {
+        return Math.ceil(this.tasks.total / this.filter.limit);
+      }
+      if (this.path === "/users") {
+        return Math.ceil(this.users.total / this.filter.limit);
+      }
     },
   },
 
   methods: {
     ...mapActions("tasks", ["setLoading", "fetchTasks", "setFilter"]),
-    ...mapActions("users", ["fetchUsers", "fetchUsersFilter"]),
+    ...mapActions("users", [
+      "setLoading",
+      "fetchUsers",
+      "fetchUsersFilter",
+      "setFilterUsers",
+    ]),
 
     numOfPage(num) {
-      this.count = num - 1;
-      this.setFilter({
-        filter: this.filter.filter,
-        page: this.count,
-        limit: 10,
-      });
-      this.fetchTasks(this.filter);
+      if (this.path === "/tasks") {
+        this.count = num - 1;
+        this.setFilter({
+          filter: this.filter.filter,
+          page: this.count,
+          limit: 10,
+        });
+        this.fetchTasks(this.filter);
+      }
+      if (this.path === "/users") {
+        this.count = num - 1;
+        this.setFilterUsers({
+          filter: this.usersFilter.filter,
+          page: this.count,
+          limit: 10,
+        });
+        this.fetchUsersFiler(this.usersFilter);
+      }
     },
   },
 };

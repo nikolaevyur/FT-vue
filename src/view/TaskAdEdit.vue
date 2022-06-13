@@ -37,6 +37,7 @@
           class="column__second-textarea"
         />
       </div>
+      <div>{{path}}</div>
     </div>
   </Board>
 </template>

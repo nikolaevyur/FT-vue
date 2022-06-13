@@ -13,7 +13,7 @@ export default {
   },
 
   props: {
-    userData: Object,
+    userData: String,
   },
 };
 </script>
@@ -35,6 +35,7 @@ export default {
   &__name {
     width: 1200px;
     overflow: hidden;
+    padding-left: 10px;
   }
 }
 </style>
