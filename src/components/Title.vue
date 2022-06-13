@@ -23,7 +23,7 @@
     font-size: 24px;
     line-height: 208px;
     width: 50%;
-    height: 50px;
+    height: 100%;
     overflow: hidden;
   }
 
