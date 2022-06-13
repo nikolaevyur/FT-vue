@@ -15,8 +15,7 @@
           :btn_success="true"
           class="btn login__btn"
           type="submit"
-          title="Применить"
-        ></Button>
+        >Вход</Button>
       </div>
     </form>
   </div>

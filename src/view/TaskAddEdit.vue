@@ -1,4 +1,16 @@
 <template>
+<div>
+    <Title>
+      <div class="title__text">{{ id ? "Редактирование" : "Создание" }}</div>
+          <div class="title__buttons"><Button
+      :btn_primary="true"
+      class="btn"
+      @click.native="submit"
+    >{{ id ? "Сохранить" : "Добавить" }}</Button>
+            <router-link to="/tasks">
+          <Button :btn_default="true"> Отмена </Button>
+        </router-link></div>
+    </Title>
   <Board>
     <div class="task__form">
       <div class="column__first">
@@ -40,11 +52,14 @@
       <div>{{path}}</div>
     </div>
   </Board>
+</div>
 </template>
 
 <script>
 import { types, ranks, statuses } from "../const/const";
 import { mapActions, mapGetters } from "vuex";
+import api from "@/api";
+
 export default {
   data() {
     return {
@@ -78,6 +93,11 @@ export default {
   methods: {
     ...mapActions("users", ["fetchUsers"]),
         ...mapActions("tasks", ["getTask"]),
+        submit() {
+      api.Events.addTask(this.formTask).then(() =>
+        this.$router.push({ name: "TasksList" })
+      );
+    },
   },
 
   watch: {

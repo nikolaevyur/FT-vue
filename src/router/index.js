@@ -5,7 +5,7 @@ import TaskForm from '../view/TaskForm'
 import UsersList from '../view/UsersList'
 import NotFound from '../view/NotFound'
 import Login from '../view/Login'
-import TaskAdEdit from '../view/TaskAdEdit'
+import TaskAddEdit from '../view/TaskAddEdit'
 
 Vue.use(VueRouter)
 
@@ -40,8 +40,8 @@ const router = () => {
 				},
 				{ 
 					path: '/adEditTask/:id?', 
-					name: 'TaskAdEdit',
-					component: TaskAdEdit, 
+					name: 'TaskAddEdit',
+					component: TaskAddEdit, 
 					props: true,
 				},
 				{ 

@@ -33,4 +33,12 @@
     column-gap: 2%;
   }
 }
+
+.title__status{
+  height: 17px;
+}
+
+a {
+  text-decoration: none;
+}
 </style>

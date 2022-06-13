@@ -17,11 +17,11 @@ export default api => {
 			})
 		},
 
-		addTask(taskData){
+		addTask(data){
 			return api.instance.request({
 				method: 'put',
 				url:'tasks/createOrEdit',
-				data: taskData
+				data: data
 			})
 		},
 

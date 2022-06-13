@@ -65,7 +65,7 @@ export default {
 
 .opened {
   background-color: #cccccc;
-  height: 100%;
+  height: 17px;
   width: 120px;
   border: 1px solid #333333;
   border-radius: 5px;
@@ -79,6 +79,7 @@ export default {
   border: 1px solid #333333;
   border-radius: 5px;
   font-size: 14px;
+  color: #846f00;
 }
 
 .testing {
@@ -88,6 +89,7 @@ export default {
   border: 1px solid #333333;
   border-radius: 5px;
   font-size: 14px;
+  color: #846f00;
 }
 
 .complete {
@@ -97,6 +99,7 @@ export default {
   border: 1px solid #333333;
   border-radius: 5px;
   font-size: 14px;
+  color: #157536;
 }
 
 .rank {

@@ -27,8 +27,8 @@
       </template>
       <div class="dropdown-lnk">
         <router-link
-          class="header__menu-link"
-          :to="{ name: 'TaskAdEdit', params: { id: taskData.id } }"
+        class="dropdown-lnk__list"
+          :to="{ name: 'TaskAddEdit', params: { id: taskData.id } }"
           >Редактировать</router-link
         >
       </div>
@@ -90,6 +90,11 @@ export default {
     &-lnk {
       font-size: 12px;
     }
+  }
+
+  a{
+    text-decoration: none;
+    color: #000;
   }
 }
 </style>

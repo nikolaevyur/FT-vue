@@ -3,7 +3,7 @@
     <Title>
       <div class="title__text">
         {{ currentTask.title }}
-        <TaskBtn :class="currentTask.status" :taskBtn="currentTask.status" />
+        <TaskBtn class="title__status" :class="currentTask.status" :taskBtn="currentTask.status" />
       </div>
     </Title>
     <Board>
@@ -27,21 +27,19 @@
           </div>
           <div class="first-column__info-task">
             <p class="column-title">Дата создания</p>
-            {{ currentTask.dateOfCreation }}
+            {{ dateOfCreation }}
           </div>
           <div class="first-column__info-task">
             <p class="column-title">Дата изменения</p>
-            {{ currentTask.dateOfUpdate }}
+            {{ dateOfUpdate }}
           </div>
           <div class="first-column__info-task">
             <p class="column-title">Затрачено времени</p>
-            <!-- {hours} часов {minutes} минут -->
+            {{ hours + " " + "часов" + " " + minutes + " " + "минут" }}
           </div>
-          <Button
-            :btn_primary="true"
-            title="Сделать запись о работе"
-            class="btn btn-primary"
-          ></Button>
+          <Button :btn_primary="true" class="btn btn-primary"
+            >Сделать запись о работе</Button
+          >
         </div>
         <div class="second-column">
           <div class="second-column__description">
@@ -72,6 +70,18 @@ export default {
   computed: {
     ...mapGetters("tasks", ["loading", "tasks", "filter", "currentTask"]),
     ...mapGetters("users", ["users", "usersList"]),
+    dateOfUpdate() {
+      return moment(this.currentTask.dateOfUpdate).format("DD.MM.YY HH:mm");
+    },
+    dateOfCreation() {
+      return moment(this.currentTask.dateOfCreation).format("DD.MM.YY HH:mm");
+    },
+    hours() {
+      return Math.trunc(this.currentTask.timeInMinutes / 60);
+    },
+    minutes() {
+      return this.currentTask.timeInMinutes % 60;
+    },
   },
   mounted() {
     this.getTask(this.$route.params.id);
@@ -86,10 +96,6 @@ export default {
       "getTask",
     ]),
     ...mapActions("users", ["fetchUsers"]),
-
-    moment(time) {
-      return moment(time);
-    },
   },
 };
 </script>
@@ -125,4 +131,5 @@ export default {
 .column-title {
   color: #cccccc;
 }
+
 </style>

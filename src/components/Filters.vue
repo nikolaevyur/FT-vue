@@ -44,8 +44,7 @@
       :btn_primary="true"
       class="btn"
       type="submit"
-      title="Применить"
-    ></Button>
+    >Применить</Button>
   </form>
 </template>
 

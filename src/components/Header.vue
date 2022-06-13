@@ -3,17 +3,28 @@
     <div class="header__logo">
       <img src="../assets/images/Logo.svg" alt="logo" />
     </div>
-    <nav class="header__menu">
-      <router-link class="header__menu-link" :to="{ name: 'TasksList' }"
+    <div v-if="this.$route.path === '/'" class="header__menu"></div>
+    <nav v-else class="header__menu">
+      <router-link class="header__menu-link" active-class="header__menu-active" :to="{ name: 'TasksList' }"
         >Задачи</router-link
       >
-      <router-link class="header__menu-link" :to="{ name: 'UsersList' }"
+      <router-link class="header__menu-link" active-class="header__menu-active" :to="{ name: 'UsersList' }"
         >Пользователи
       </router-link>
     </nav>
     <div class="header__user"></div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      path: this.$route.path,
+    }
+  }
+  }
+</script>
 
 <style lang='scss' scoped>
 .header {

@@ -1,6 +1,6 @@
 <template>
   <button class="btn" :class="className">
-    {{ title }}
+    {{ title }}<slot></slot>
   </button>
 </template>
 
@@ -8,10 +8,6 @@
 export default {
   name: "button",
   props: {
-    title: {
-      type: String,
-      default: "text",
-    },
     btn_primary: {
       type: Boolean,
       default: false,
