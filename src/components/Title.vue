@@ -23,7 +23,8 @@
     font-size: 24px;
     line-height: 208px;
     width: 50%;
-    height: 100%;
+    height: 50px;
+    overflow: hidden;
   }
 
   &__buttons {
