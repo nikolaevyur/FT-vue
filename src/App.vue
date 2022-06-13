@@ -27,7 +27,6 @@ export default {
   flex-direction: column;
   row-gap: 50px;
   font-family: "Roboto", sans-serif;
-  background: #E5E5E5;
+  background: #e5e5e5;
 }
-
 </style>

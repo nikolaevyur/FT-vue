@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown-wrapper">
     <div
-      class="dropdown-button "
+      class="dropdown-button"
       :class="{ '-active': isActive }"
       @click="toggle"
     >

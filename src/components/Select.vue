@@ -1,9 +1,8 @@
 <template>
-
   <select class="input" v-model="checked" @change="onChange">
-        <option selected disabled >
-          <slot></slot>
-      </option>
+    <option selected disabled>
+      <slot></slot>
+    </option>
     <option
       v-for="(item, index) in obj"
       :key="index"
@@ -14,7 +13,6 @@
       {{ item }}
     </option>
   </select>
-
 </template>
 
 <script>
@@ -52,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .input {
+.input {
   background: #ffffff;
   border-radius: 3px;
   border: 1px solid #b5b5b5;

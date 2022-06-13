@@ -1,58 +1,57 @@
 <template>
-<div>
+  <div>
     <Title>
       <div class="title__text">{{ id ? "Редактирование" : "Создание" }}</div>
-          <div class="title__buttons"><Button
-      :btn_primary="true"
-      class="btn"
-      @click.native="submit"
-    >{{ id ? "Сохранить" : "Добавить" }}</Button>
-            <router-link to="/tasks">
+      <div class="title__buttons">
+        <Button :btn_primary="true" class="btn" @click.native="submit">{{
+          id ? "Сохранить" : "Добавить"
+        }}</Button>
+        <router-link to="/tasks">
           <Button :btn_default="true"> Отмена </Button>
-        </router-link></div>
+        </router-link>
+      </div>
     </Title>
-  <Board>
-    <div class="task__form">
-      <div class="column__first">
-        <label className="column-title">Исполнитель</label>
-        <Select
-          class="column__first-select"
-          :obj="usersList"
-          v-model="formTask.assignedId"
-          >Исполнитель</Select
-        >
-        <label className="column-title">Тип</label>
-        <Select
-          class="column__first-select"
-          :obj="types"
-          v-model="formTask.type"
-          >Тип</Select
-        >
-        <label className="column-title">Приоритет</label>
-        <Select
-          class="column__first-select"
-          :obj="ranks"
-          v-model="formTask.rank"
-          >Приоритет</Select
-        >
+    <Board>
+      <div class="task__form">
+        <div class="column__first">
+          <label className="column-title">Исполнитель</label>
+          <Select
+            class="column__first-select"
+            :obj="usersList"
+            v-model="formTask.assignedId"
+            >Исполнитель</Select
+          >
+          <label className="column-title">Тип</label>
+          <Select
+            class="column__first-select"
+            :obj="types"
+            v-model="formTask.type"
+            >Тип</Select
+          >
+          <label className="column-title">Приоритет</label>
+          <Select
+            class="column__first-select"
+            :obj="ranks"
+            v-model="formTask.rank"
+            >Приоритет</Select
+          >
+        </div>
+        <div class="column__second">
+          <label className="column-title">Название</label>
+          <Input
+            class="column__second-input"
+            v-model="formTask.title"
+            placeholder="Название задачи"
+          />
+          <label className="column-title">Описание</label>
+          <Textarea
+            v-model="formTask.description"
+            class="column__second-textarea"
+          />
+        </div>
       </div>
-      <div class="column__second">
-        <label className="column-title">Название</label>
-        <Input
-          class="column__second-input"
-          v-model="formTask.title"
-          placeholder="Название задачи"
-        />
-        <label className="column-title">Описание</label>
-        <Textarea
-          v-model="formTask.description"
-          class="column__second-textarea"
-        />
-      </div>
-      <div>{{path}}</div>
-    </div>
-  </Board>
-</div>
+    </Board>
+  </div>
 </template>
 
 <script>
@@ -92,8 +91,8 @@ export default {
 
   methods: {
     ...mapActions("users", ["fetchUsers"]),
-        ...mapActions("tasks", ["getTask"]),
-        submit() {
+    ...mapActions("tasks", ["getTask"]),
+    submit() {
       api.Events.addTask(this.formTask).then(() =>
         this.$router.push({ name: "TasksList" })
       );

@@ -5,10 +5,16 @@
     </div>
     <div v-if="this.$route.path === '/'" class="header__menu"></div>
     <nav v-else class="header__menu">
-      <router-link class="header__menu-link" active-class="header__menu-active" :to="{ name: 'TasksList' }"
+      <router-link
+        class="header__menu-link"
+        active-class="header__menu-active"
+        :to="{ name: 'TasksList' }"
         >Задачи</router-link
       >
-      <router-link class="header__menu-link" active-class="header__menu-active" :to="{ name: 'UsersList' }"
+      <router-link
+        class="header__menu-link"
+        active-class="header__menu-active"
+        :to="{ name: 'UsersList' }"
         >Пользователи
       </router-link>
     </nav>
@@ -21,9 +27,9 @@ export default {
   data() {
     return {
       path: this.$route.path,
-    }
-  }
-  }
+    };
+  },
+};
 </script>
 
 <style lang='scss' scoped>

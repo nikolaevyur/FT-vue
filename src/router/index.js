@@ -38,16 +38,16 @@ const router = () => {
 					component: Login,
 					props: true,
 				},
-				{ 
-					path: '/adEditTask/:id?', 
+				{
+					path: '/adEditTask/:id?',
 					name: 'TaskAddEdit',
-					component: TaskAddEdit, 
+					component: TaskAddEdit,
 					props: true,
 				},
-				{ 
-					path: '*', 
+				{
+					path: '*',
 					name: 'NotFound',
-					component: NotFound, 
+					component: NotFound,
 					props: true,
 				},
 			],

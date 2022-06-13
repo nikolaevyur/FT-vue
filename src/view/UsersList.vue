@@ -39,11 +39,15 @@ export default {
       filter: {},
       page: 0,
       limit: 10,
-    })
+    });
   },
 
   methods: {
-    ...mapActions("users", ["fetchUsers", "fetchUsersFilter", "setFilterUsers"]),
+    ...mapActions("users", [
+      "fetchUsers",
+      "fetchUsersFilter",
+      "setFilterUsers",
+    ]),
   },
 };
 </script>

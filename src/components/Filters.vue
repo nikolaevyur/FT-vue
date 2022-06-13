@@ -40,11 +40,7 @@
       </Checkbox>
     </DropdownBtn>
 
-    <Button
-      :btn_primary="true"
-      class="btn"
-      type="submit"
-    >Применить</Button>
+    <Button :btn_primary="true" class="btn" type="submit">Применить</Button>
   </form>
 </template>
 

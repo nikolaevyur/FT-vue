@@ -51,10 +51,10 @@ export default {
 }
 
 textarea {
-        height: 95%;
-        width: 100%;
-        padding: 5px;
-        margin: 5px 0 0 0;
-        resize: none;
-      }
+  height: 95%;
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0 0 0;
+  resize: none;
+}
 </style>

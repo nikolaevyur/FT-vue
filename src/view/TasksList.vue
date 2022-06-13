@@ -3,9 +3,10 @@
     <Title>
       <div class="title__text">Задачи</div>
       <div class="title__buttons">
-            <router-link :to="{ name: 'TaskAddEdit' }">
+        <router-link :to="{ name: 'TaskAddEdit' }">
           <Button :btn_primary="true"> Добавить задачу </Button>
-        </router-link></div>
+        </router-link>
+      </div>
     </Title>
     <Board>
       <Filters />
@@ -61,5 +62,4 @@ export default {
   width: 100%;
   height: 560px;
 }
-
 </style>

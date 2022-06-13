@@ -27,7 +27,7 @@
       </template>
       <div class="dropdown-lnk">
         <router-link
-        class="dropdown-lnk__list"
+          class="dropdown-lnk__list"
           :to="{ name: 'TaskAddEdit', params: { id: taskData.id } }"
           >Редактировать</router-link
         >
@@ -92,7 +92,7 @@ export default {
     }
   }
 
-  a{
+  a {
     text-decoration: none;
     color: #000;
   }

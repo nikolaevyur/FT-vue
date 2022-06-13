@@ -3,7 +3,11 @@
     <Title>
       <div class="title__text">
         {{ currentTask.title }}
-        <TaskBtn class="title__status" :class="currentTask.status" :taskBtn="currentTask.status" />
+        <TaskBtn
+          class="title__status"
+          :class="currentTask.status"
+          :taskBtn="currentTask.status"
+        />
       </div>
     </Title>
     <Board>
@@ -131,5 +135,4 @@ export default {
 .column-title {
   color: #cccccc;
 }
-
 </style>

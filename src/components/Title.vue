@@ -34,7 +34,7 @@
   }
 }
 
-.title__status{
+.title__status {
   height: 17px;
 }
 

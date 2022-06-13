@@ -75,14 +75,14 @@ export default {
           dispatch('setLoading', false)
         })
     },
-    
+
     setFilterUsers: ({ dispatch, commit }, filter) => {
       commit(mutation.SET_USERS_FILTER, filter)
       dispatch('fetchUsersFilter', filter);
     },
 
     login: ({ dispatch, commit }, form) => {
-      api.Events.loginUser(form).then(({data}) => {
+      api.Events.loginUser(form).then(({ data }) => {
         localStorage.setItem('loginUser', data.id);
       })
     },

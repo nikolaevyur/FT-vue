@@ -11,11 +11,9 @@
         <Input v-model="form.password" placeholder="Пароль" />
       </label>
       <div>
-        <Button
-          :btn_success="true"
-          class="btn login__btn"
-          type="submit"
-        >Вход</Button>
+        <Button :btn_success="true" class="btn login__btn" type="submit"
+          >Вход</Button
+        >
       </div>
     </form>
   </div>
