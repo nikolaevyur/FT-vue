@@ -1,6 +1,6 @@
 <template>
   <form class="filters" @submit.prevent="submit">
-    <DropdownBtn text="Тип" class="filters__type">
+    <DropdownBtn text="Тип" class="filters__type input">
       <Checkbox
         v-for="(item, index) in types"
         :key="index"
@@ -9,8 +9,8 @@
         v-model="form.type"
       ></Checkbox>
     </DropdownBtn>
-    <Input v-model="form.query" placeholder="Задача" />
-    <DropdownBtn text="Пользователь" class="filters__user">
+    <Input class="filters__input" v-model="form.query" placeholder="Задача" />
+    <DropdownBtn text="Пользователь" class="filters__user input">
       <Checkbox
         v-for="(item, index) in usersList"
         :key="index"
@@ -19,7 +19,7 @@
         v-model="form.assignedUsers"
       ></Checkbox>
     </DropdownBtn>
-    <DropdownBtn text="Приоритет" class="filters__rank">
+    <DropdownBtn text="Приоритет" class="filters__rank input">
       <Checkbox
         v-for="(item, index) in statuses"
         :key="index"
@@ -29,7 +29,7 @@
       >
       </Checkbox>
     </DropdownBtn>
-    <DropdownBtn text="Статус" class="filters__status">
+    <DropdownBtn text="Статус" class="filters__status input">
       <Checkbox
         v-for="(item, index) in ranks"
         :key="index"
@@ -90,8 +90,8 @@ export default {
 .filters {
   display: flex;
   width: 100%;
-  column-gap: 10px;
-  padding-left: 80px;
+  column-gap: 15px;
+  padding-left: 30px;
 
   &__type {
     width: 98px;
@@ -107,6 +107,10 @@ export default {
 
   &__user {
     width: 160px;
+  }
+
+  &__input {
+    width: 450px;
   }
 }
 

@@ -69,6 +69,7 @@ export default {
   width: 120px;
   border: 1px solid #333333;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .inProgress {
@@ -77,6 +78,7 @@ export default {
   width: 120px;
   border: 1px solid #333333;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .testing {
@@ -85,6 +87,7 @@ export default {
   width: 120px;
   border: 1px solid #333333;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .complete {
@@ -93,6 +96,7 @@ export default {
   width: 120px;
   border: 1px solid #333333;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .rank {

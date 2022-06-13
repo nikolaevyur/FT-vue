@@ -1,11 +1,12 @@
 <template>
   <div class="dropdown-wrapper">
     <div
-      class="dropdown-button input"
+      class="dropdown-button "
       :class="{ '-active': isActive }"
       @click="toggle"
     >
       {{ text }}
+      <inside><slot name="inside"></slot></inside>
     </div>
     <div class="dropdown-menu input" v-if="isActive">
       <slot :isActive="isActive"></slot>
@@ -54,6 +55,7 @@ export default {
     right: 0px;
     left: 0px;
     border: 1px solid black;
+    background-color: #fff;
     &-item {
       border-bottom: 1px solid black;
     }

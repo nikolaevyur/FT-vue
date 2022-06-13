@@ -35,6 +35,7 @@ export default {
       return {
         "btn-primary": this.btn_primary,
         "btn-error": this.btn_error,
+        "btn-success": this.btn_success
       };
     },
   },

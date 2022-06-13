@@ -47,5 +47,13 @@ export default api => {
 				data: data
 			})
 		},
+
+		loginUser(form) {
+      return api.instance.request({
+        method: 'post',
+        url: 'users/login',
+        data: form,
+      })
+    },
 	}
 }

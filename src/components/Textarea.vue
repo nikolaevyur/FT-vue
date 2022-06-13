@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input
+    <textarea
       type="text"
       :placeholder="placeholder"
       :value="value"
@@ -49,4 +49,12 @@ export default {
 .item__input {
   width: 100%;
 }
+
+textarea {
+        height: 95%;
+        width: 100%;
+        padding: 5px;
+        margin: 5px 0 0 0;
+        resize: none;
+      }
 </style>

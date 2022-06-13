@@ -16,6 +16,23 @@
     <div class="task__user">{{ usersList[taskData.assignedId] }}</div>
     <TaskBtn :class="taskData.status" :taskBtn="taskData.status" />
     <TaskBtn :class="taskData.rank" :taskBtn="taskData.rank" />
+    <DropdownBtn class="dropdown">
+      <template v-slot:inside>
+        <img
+          src="../assets/images/dropdown-icon.svg"
+          alt="burger"
+          width="10"
+          height="12"
+        />
+      </template>
+      <div class="dropdown-lnk">
+        <router-link
+          class="header__menu-link"
+          :to="{ name: 'TaskAdEdit', params: { id: taskData.id } }"
+          >Редактировать</router-link
+        >
+      </div>
+    </DropdownBtn>
   </div>
 </template>
 
@@ -56,16 +73,23 @@ export default {
   column-gap: 10px;
 
   &__name {
-    width: 500px;
+    width: 450px;
     overflow: hidden;
   }
 
   &__type {
-    width: 98px;
+    width: 88px;
   }
 
   &__user {
     width: 180px;
+  }
+
+  .dropdown {
+    width: 100px;
+    &-lnk {
+      font-size: 12px;
+    }
   }
 }
 </style>

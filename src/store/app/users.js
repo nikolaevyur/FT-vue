@@ -5,7 +5,8 @@ export const mutation = {
   SET_LOADING: 'SET_LOADING',
   SET_USERS: 'SET_USERS',
   SET_USERS_FILTER: 'SET_USERS_FILTER',
-  SET_USER_LIST: 'SET_USER_LIST'
+  SET_USER_LIST: 'SET_USER_LIST',
+  SET_LOGIN_USER: 'SET_LOGIN_USER',
 }
 
 export default {
@@ -19,13 +20,15 @@ export default {
       page: 0,
       limit: 10
     },
+    loginUser: {}
   },
 
   getters: {
     users: state => state.users,
     usersList: state => state.usersList,
     loading: state => state.loading,
-    usersFilter: state => state.usersFilter
+    usersFilter: state => state.usersFilter,
+    loginUser: state => state.loginUser,
   },
 
   mutations: {
@@ -40,6 +43,9 @@ export default {
     },
     [mutation.SET_USER_LIST]: (state, data) => {
       state.usersList = data
+    },
+    [mutation.SET_LOGIN_USER]: (state, data) => {
+      state.loginUser = data;
     },
   },
 
@@ -69,10 +75,16 @@ export default {
           dispatch('setLoading', false)
         })
     },
+    
+    setFilterUsers: ({ dispatch, commit }, filter) => {
+      commit(mutation.SET_USERS_FILTER, filter)
+      dispatch('fetchUsersFilter', filter);
+    },
 
-    // setFilterUsers: ({ dispatch, commit }, filter) => {
-    //   commit(mutation.SET_USERS_FILTER, filter)
-    //   dispatch('fetchUsersFilter', filter);
-    // },
+    login: ({ dispatch, commit }, form) => {
+      api.Events.loginUser(form).then(({data}) => {
+        localStorage.setItem('loginUser', data.id);
+      })
+    },
   },
 }
